@@ -32,7 +32,7 @@ loops: libclassloops.a
 recursives: libclassrec.a
 recursived:libclassrec.so
 loopd: libclassloops.so
-all: libclassloops.a libclassrec.a libclassrec.so libclassloops.so mains maindloop maindrec mains maindloop maindrec
+all: libclassloops.a libclassrec.a libclassrec.so libclassloops.so mains maindloop maindrec
 
 clean:
 	rm -f *.o *.a *.so
