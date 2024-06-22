@@ -28,7 +28,7 @@ maindrec: main.o libclassrec.so
 	$(CC) -o maindrec main.o -L. -lclassrec
 
 #### commands 
-loop: libclassloops.a
+loops: libclassloops.a
 recursives: libclassrec.a
 recursived:libclassrec.so
 loopd: libclassloops.so
