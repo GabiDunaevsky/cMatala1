@@ -35,7 +35,7 @@ maindrec: main.o libclassrec.so
 	$(CC) -o $@ $^
 
 ### Phony targets
-loop: libclassloops.a
+loops: libclassloops.a
 recursives: libclassrec.a
 recursived:libclassrec.so
 loopd: libclassloops.so
