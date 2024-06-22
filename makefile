@@ -9,33 +9,65 @@ OBJECTS = $(SOURCES:.c=.o)
 
 ### Pattern rule for object file compilation
 %.o: %.c NumClass.h
-	$(CC) $(CFLAGS) -c $< -o $@
+ifeq ($(wildcard $@),)
+    $(CC) $(CFLAGS) -c $< -o $@
+else
+    @echo "$@ already exists. Skipping compilation."
+endif
 
 ### Library creation rules
 libclassloops.a: advancedClassificationLoop.o basicClassification.o
-	ar rcs $@ $^
+ifeq ($(wildcard $@),)
+    ar rcs $@ $^
+else
+    @echo "$@ already exists. Skipping library creation."
+endif
 
 libclassrec.a: advancedClassificationRecursion.o basicClassification.o
-	ar rcs $@ $^
+ifeq ($(wildcard $@),)
+    ar rcs $@ $^
+else
+    @echo "$@ already exists. Skipping library creation."
+endif
 
 libclassrec.so: advancedClassificationRecursion.o basicClassification.o
-	$(CC) -shared -o $@ $^
+ifeq ($(wildcard $@),)
+    $(CC) -shared -o $@ $^
+else
+    @echo "$@ already exists. Skipping shared library creation."
+endif
 
 libclassloops.so: advancedClassificationLoop.o basicClassification.o
-	$(CC) -shared -o $@ $^
+ifeq ($(wildcard $@),)
+    $(CC) -shared -o $@ $^
+else
+    @echo "$@ already exists. Skipping shared library creation."
+endif
 
 ### Executable targets
 mains: main.o libclassrec.a
-	$(CC) -o $@ $^ -static
+ifeq ($(wildcard $@),)
+    $(CC) -o $@ $^ -static
+else
+    @echo "$@ already exists. Skipping executable creation."
+endif
 
 maindloop: main.o libclassloops.so
-	$(CC) -o $@ $^
+ifeq ($(wildcard $@),)
+    $(CC) -o $@ $^
+else
+    @echo "$@ already exists. Skipping executable creation."
+endif
 
 maindrec: main.o libclassrec.so
-	$(CC) -o $@ $^
+ifeq ($(wildcard $@),)
+    $(CC) -o $@ $^
+else
+    @echo "$@ already exists. Skipping executable creation."
+endif
 
 ### Phony targets
-loops: libclassloops.a
+loop: libclassloops.a
 recursives: libclassrec.a
 recursived:libclassrec.so
 loopd: libclassloops.so
@@ -43,6 +75,6 @@ loopd: libclassloops.so
 all: libclassloops.a libclassrec.a libclassrec.so libclassloops.so mains maindloop maindrec
 
 clean:
-	rm -f *.o *.a *.so mains maindloop maindrec
+    rm -f *.o *.a *.so mains maindloop maindrec
 
 .PHONY: clean loop recursives recursived loopd mains maindloop maindrec all
