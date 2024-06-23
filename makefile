@@ -29,10 +29,10 @@ mains: main.o libclassrec.a
 	$(CC) -o $@ $^ -static
 
 maindloop: main.o libclassloops.so
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ -Wl,-rpath,.
 
 maindrec: main.o libclassrec.so
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ -Wl,-rpath,.
 
 ### Phony targets
 loops: libclassloops.a
