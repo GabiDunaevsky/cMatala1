@@ -26,31 +26,31 @@ int main(){
     }
     int start = num1 > num2 ? num2 : num1;
     int end = num1 > num2 ? num1 : num2;
-    printf("The Armstrong numbers are: ");
+    printf("The Armstrong numbers are:");
     for(int i = start; i <= end;++i){
         if(isArmstrong(i)){
-            printf("%d ", i);
+            printf(" %d", i);
         }
     }
     printf("\n");
-    printf("The Palindromes are: ");
+    printf("The Palindromes are:");
     for(int i = start; i <= end;++i){
         if(isPalindrome(i)){
-            printf("%d ", i);
+            printf(" %d", i);
         }
     }
     printf("\n");
-    printf("The Prime numbers are: ");
+    printf("The Prime numbers are:");
     for(int i = start; i <= end;++i){
         if(isPrime(i)){
-            printf("%d ", i);
+            printf(" %d", i);
         }
     }
     printf("\n");
-    printf("The Strong numbers are: ");
+    printf("The Strong numbers are:");
     for(int i = start; i <= end;++i){
         if(isStrong(i)){
-            printf("%d ", i);
+            printf(" %d", i);
         }
     }
     printf("\n");
