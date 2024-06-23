@@ -26,13 +26,13 @@ libclassloops.so: advancedClassificationLoop.o basicClassification.o
 
 ### Executable targets
 mains: main.o libclassrec.a
-	$(CC) -o $@ $^ -static
+	$(CC) $(CFLAGS) -o $@ $^ -static
 
 maindloop: main.o libclassloops.so
-	$(CC) -o $@ $^ -Wl,-rpath,.
+	$(CC) $(CFLAGS) -o $@ $^ -Wl,-rpath,.
 
 maindrec: main.o libclassrec.so
-	$(CC) -o $@ $^ -Wl,-rpath,.
+	$(CC) $(CFLAGS) -o $@ $^ -Wl,-rpath,.
 
 ### Phony targets
 loops: libclassloops.a
