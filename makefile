@@ -32,7 +32,7 @@ maindloop: main.o libclassloops.so
 	$(CC) $(CFLAGS) -o $@ $^ -Wl,-rpath,.
 
 maindrec: main.o libclassrec.so
-	$(CC) $(CFLAGS) -o $@ $^ -Wl,-rpath,.
+	$(CC) $(CFLAGS) $^ -o $@ -Wl,-rpath,.
 
 ### Phony targets
 loops: libclassloops.a
